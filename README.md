@@ -39,15 +39,7 @@ The `DataFrameProcessor` provides the following functionalities:
 
 ---
 
-## Installation
 
-For Conda environment:
-run in the cmd: conda env create -f environment.yml
-
-For pip virtual environment:
-python3 -m venv env
-source env/bin/activate
-pip install -r requirements.txt
 
 ## Key Advantages
 - **Automation**: Reduces the need for repetitive data-cleaning scripts.
@@ -61,11 +53,15 @@ pip install -r requirements.txt
 - **Assumptions in Imputation**: Mean/median imputation assumes a certain data distribution, which might not always align with the actual data.
 
 ---
+## Installation
 
-## Contribution
-Contributions are welcome! If you’d like to add features, fix bugs, or improve documentation, feel free to fork this repository and submit a pull request.
+For Conda environment:
+run in the cmd: conda env create -f environment.yml
 
----
+For pip virtual environment:
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
 
 For extra code example, please check under examples folder.
 
@@ -105,18 +101,8 @@ print(processed_df.info())
 
 
 
-## Key Advantages
-- **Automation**: Reduces the need for repetitive data-cleaning scripts.
-- **Customizable**: Flexible thresholds and encoding options to suit different datasets.
-- **Integration**: Compatible with Pandas, making it easy to integrate into existing workflows.
 
----
 
-## Limitations
-- **Memory Usage**: One-hot encoding may cause dimensionality explosion for high-cardinality categorical variables.
-- **Assumptions in Imputation**: Mean/median imputation assumes a certain data distribution, which might not always align with the actual data.
-
----
 
 ## Contribution
 Contributions are welcome! If you’d like to add features, fix bugs, or improve documentation, feel free to fork this repository and submit a pull request.
