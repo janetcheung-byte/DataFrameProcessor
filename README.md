@@ -56,12 +56,16 @@ The `DataFrameProcessor` provides the following functionalities:
 ## Installation
 
 For Conda environment:
+```bash
 run in the cmd: conda env create -f environment.yml
+```
 
 For pip virtual environment:
+```bash
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
+```
 
 For extra code example, please check under examples folder.
 
