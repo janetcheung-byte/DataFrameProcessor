@@ -113,6 +113,14 @@ Contributions are welcome! If you’d like to add features, fix bugs, or improve
 
 ---
 
+## Support the Project ❤️
+
+If you find this library helpful in your projects, please consider giving it a ⭐ on GitHub!  
+It motivates me to continue improving and adding more features.
+
+[![GitHub Stars](https://img.shields.io/github/stars/janetcheung-byte/DataFrameProcessor?style=social)](https://github.com/janetcheung-byte/DataFrameProcessor)
+
+
 ## License
 This project is licensed under the **Apache License 2.0**.
 
