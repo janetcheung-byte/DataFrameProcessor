@@ -1,6 +1,6 @@
 # DataFrameProcessor
 
-The `DataFrameProcessor` is a Python module designed to streamline and automate the preprocessing of tabular data in Pandas DataFrames. It simplifies common data-cleaning tasks such as handling missing values, detecting and removing outliers, and encoding categorical variables. This tool is ideal for data analysts and data scientists who need to prepare datasets for machine learning models or other types of analysis.
+The `DataFrameProcessor` is a Python class designed to streamline and automate the preprocessing of tabular data in Pandas DataFrames. It simplifies common data-cleaning tasks such as handling missing values, detecting and removing outliers, and encoding categorical variables. This tool is ideal for data analysts and data scientists who need to prepare datasets for machine learning models or other types of analysis.
 
 ---
 
