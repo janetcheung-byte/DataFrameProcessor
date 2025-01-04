@@ -67,6 +67,10 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
+## Install Directly from GitHub
+```bash
+pip install git+https://github.com/janetcheung-byte/DataFrameProcessor.git
+```
 For extra code example, please check under examples folder.
 
 Code usage example:
