@@ -31,10 +31,13 @@ The `DataFrameProcessor` provides the following functionalities:
    - Automatically applies label encoding to binary categorical variables.
    - One-hot encodes non-binary categorical variables, with options to drop high-cardinality columns.
 
-8. **Customizable Processing Steps**:
+8. **Automated Multicollinearity Handling**: 
+   - Reduces redundancy in features by removing highly correlated variables.
+
+9. **Customizable Processing Steps**:
    - Offers the flexibility to customize thresholds and select specific preprocessing steps.
 
-9. **Pipeline Execution**:
+10. **Pipeline Execution**:
    - Provides a `process_all()` method to execute all preprocessing steps sequentially.
 
 ---
@@ -107,7 +110,20 @@ processed_df = processor.get_processed_df()
 print(processed_df.info())
 ```
 
+# Update 01/05/2025
+* Changes Made:
+_calculate_vif Method:
 
+* A helper function that calculates VIF for the given DataFrame's numeric features.
+remove_high_vif_columns Method:
+
+* Iteratively removes columns with VIF greater than the specified threshold.
+Integrated VIF Handling in process_all:
+
+* Automatically removes high-VIF columns as part of the pipeline.
+Documentation Updates:
+
+* Updated the class docstring to reflect the new functionality.
 
 
 
