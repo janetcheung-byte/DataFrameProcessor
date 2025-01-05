@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 
 class DataFrameProcessor:
@@ -17,6 +17,8 @@ class DataFrameProcessor:
       - Handling duplicate rows and missing values
       - Detecting and handling outliers in quantitative variables using the IQR method
       - Encoding binary and non-binary categorical variables with label and one-hot encoding
+      - calculate_vif: Calculates Variance Inflation Factor (VIF) for the DataFrame's features.
+      - remove_high_vif_columns: Removes features with a VIF greater than a specified threshold.
 
     Parameters:
     - df (pd.DataFrame): The input DataFrame to be processed.
@@ -263,9 +265,52 @@ class DataFrameProcessor:
         self.df = pd.get_dummies(self.df, columns=categorical_columns, drop_first=True, dtype=np.int8)
         print("\nDataFrame info after one-hot encoding:")
         print(self.df.info())
+        
+    def _calculate_vif(self, df):
+        """
+        Calculate Variance Inflation Factor (VIF) for all features in a DataFrame.
+
+        Parameters:
+        - df (DataFrame): A DataFrame containing only numerical columns.
+
+        Returns:
+        - DataFrame: A DataFrame with two columns: Feature and VIF.
+        """
+        vif_data = pd.DataFrame()
+        vif_data["Feature"] = df.columns
+        vif_data["VIF"] = [variance_inflation_factor(df.values, i) for i in range(df.shape[1])]
+        return vif_data
+
+    def remove_high_vif_columns(self, threshold=5):
+        """
+        Remove columns with Variance Inflation Factor (VIF) greater than a specified threshold.
+
+        Parameters:
+        - threshold (float): The VIF threshold above which columns are removed.
+
+        Returns:
+        - DataFrame: A DataFrame with high-VIF columns removed.
+        - DataFrame: The VIF values of the remaining columns.
+        """
+        df_copy = self.df.select_dtypes(include=["number"]).copy()  # Only include numeric columns
+        while True:
+            vif_data = self._calculate_vif(df_copy)
+            max_vif = vif_data["VIF"].max()
+
+            if max_vif > threshold:
+                max_vif_column = vif_data.loc[vif_data["VIF"].idxmax(), "Feature"]
+                print(f"Removing '{max_vif_column}' with VIF: {max_vif}")
+                df_copy.drop(columns=[max_vif_column], inplace=True)
+            else:
+                break
+
+        self.df = self.df[df_copy.columns]  # Update the main DataFrame to match remaining columns
+        print("\nRemaining features after VIF filtering:")
+        print(vif_data)
+        return self.df, vif_data
 
     
-    def process_all(self, datetime_columns=[], columns_to_remove=[], binary_mapping=None, percentage=5, drop_threshold=5, cardinality_threshold=100):
+    def process_all(self, datetime_columns=[], columns_to_remove=[], binary_mapping=None, percentage=5, drop_threshold=5, cardinality_threshold=100, vif_threshold=5):
         """
         Runs all processing steps on the DataFrame in sequence:
         - convert variables into datetime objects
@@ -273,6 +318,7 @@ class DataFrameProcessor:
         - handle_duplicate_na
         - handle_quantitative_outliers
         - process_encoding
+        - removes features with a VIF greater than a specified threshold.
 
         Parameters:
         -datetime_columns (list): List of variables to convert into pd datetime object.
@@ -280,6 +326,7 @@ class DataFrameProcessor:
         - binary_mapping (dict): Dictionary for mapping binary values, e.g., {'Yes': 1, 'No': 0}.
         - percentage (int): Threshold percentage for dropping columns with missing values.
         - drop_threshold (int): Threshold for unique values to decide which columns to drop.
+        - vif_threshold (float): The threshold for VIF to remove multicollinear features.
 
         Example:
         # Load sample data
@@ -309,6 +356,9 @@ class DataFrameProcessor:
         self.handle_duplicate_na(percentage=percentage)
         self.handle_quantitative_outliers()
         self.process_encoding(binary_mapping=binary_mapping, drop_threshold=drop_threshold, cardinality_threshold=cardinality_threshold)
+        self.remove_high_vif_columns(threshold=vif_threshold)
+    
+
     
     def get_processed_df(self):
         """
