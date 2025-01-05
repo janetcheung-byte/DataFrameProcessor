@@ -84,7 +84,7 @@ pip install --upgrade git+https://github.com/janetcheung-byte/DataFrameProcessor
 ## Verify Installation
 ### After installation, verify that the module is properly installed and updated:
 ```bash
-pip show dataframe_processor
+ pip show DataFrameProcessor
 ```
 
 ### For extra code example, please check under examples folder.
