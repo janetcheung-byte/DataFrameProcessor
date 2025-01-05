@@ -100,7 +100,8 @@ processor.process_all(
     binary_mapping=binary_mapping,
     percentage=5,
     drop_threshold=5,
-    cardinality_threshold=100
+    cardinality_threshold=100,
+    vif_threshold=5
 )
 
 # Retrieve the processed DataFrame
