@@ -111,19 +111,22 @@ print(processed_df.info())
 ```
 
 # Update 01/05/2025
-* Changes Made:
-_calculate_vif Method:
+## Changes Made:
+1. _calculate_vif Method:
 
-* A helper function that calculates VIF for the given DataFrame's numeric features.
-remove_high_vif_columns Method:
+- A helper function that calculates VIF for the given DataFrame's numeric features.
 
-* Iteratively removes columns with VIF greater than the specified threshold.
-Integrated VIF Handling in process_all:
+2. remove_high_vif_columns Method:
 
-* Automatically removes high-VIF columns as part of the pipeline.
-Documentation Updates:
+- Iteratively removes columns with VIF greater than the specified threshold.
 
-* Updated the class docstring to reflect the new functionality.
+3. Integrated VIF Handling in process_all:
+
+- Automatically removes high-VIF columns as part of the pipeline.
+
+4. Documentation Updates:
+
+- Updated the class docstring to reflect the new functionality.
 
 
 
