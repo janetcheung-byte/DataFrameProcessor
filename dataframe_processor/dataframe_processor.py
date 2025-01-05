@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+
 class DataFrameProcessor:
     """
     A class to preprocess a DataFrame, including handling duplicate rows, missing values, 
@@ -154,6 +156,9 @@ class DataFrameProcessor:
         print(self.df.isna().sum().sort_values(ascending=False))
 
     def handle_quantitative_outliers(self):
+        import matplotlib
+        matplotlib.rcParams['figure.facecolor'] = 'white'
+        matplotlib.rcParams['axes.facecolor'] = 'white'
         """
         Identifies, visualizes, and caps outliers in quantitative variables using the IQR method.
         """
