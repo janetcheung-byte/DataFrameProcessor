@@ -1,1 +1,2 @@
-from .dataframe_processor import DataFrameProcessor
+from dataframe_processor.dataframe_processor import DataFrameProcessor
+
