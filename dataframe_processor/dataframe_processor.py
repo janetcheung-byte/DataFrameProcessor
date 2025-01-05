@@ -61,9 +61,9 @@ class DataFrameProcessor:
         Parameters:
         - df (DataFrame): The input DataFrame to process.
         """
+        self.df = df
         # Replace spaces with underscores and lowercase column names
         df.columns = df.columns.str.replace(" ", "_").str.lower()
-        self.df = df.copy()
         self.columns_exclude = []
         print(f"Processed column names: {list(self.df.columns)}")
         
