@@ -74,7 +74,20 @@ pip install -r requirements.txt
 ```bash
 pip install git+https://github.com/janetcheung-byte/DataFrameProcessor.git
 ```
-For extra code example, please check under examples folder.
+
+## Update:
+### If you already have it installed and want to update it:
+```bash
+pip install --upgrade git+https://github.com/janetcheung-byte/DataFrameProcessor.git
+```
+
+## Verify Installation
+### After installation, verify that the module is properly installed and updated:
+```bash
+pip show dataframe_processor
+```
+
+### For extra code example, please check under examples folder.
 
 Code usage example:
 ```python
