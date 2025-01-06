@@ -87,6 +87,16 @@ pip install --upgrade git+https://github.com/janetcheung-byte/DataFrameProcessor
  pip show DataFrameProcessor
 ```
 
+## Manual Installation
+### If automated installation fails, manually clone the repository and install it:
+```bash
+git clone https://github.com/janetcheung-byte/DataFrameProcessor.git
+cd DataFrameProcessor
+```
+```bash
+pip install .
+```
+
 ### For extra code example, please check under examples folder.
 
 Code usage example:
